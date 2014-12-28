@@ -1,0 +1,45 @@
+[Header]
+MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
+Version=1.0
+[File000]
+Location=C:\Users\arko\Documents\GitHub\L1DemosceneBoard\L1Demo-asm-example_v8\L1Demo-sam.o
+Folder=Intermediary
+DeviceName=PIC24FJ256DA206
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={C6E07232-414F-4A0C-AF99-CD44E2B71960}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-as.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|L1Demo-sam.s||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g
+TraceCmdString=
+DebugOptions=
+[File001]
+Location=C:\Users\arko\Documents\GitHub\L1DemosceneBoard\L1Demo-asm-example_v8\L1Demo-asm.cof
+Folder=Output
+DeviceName=PIC24FJ256DA206
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-ld.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|L1Demo-sam.s||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
+TraceCmdString=
+DebugOptions=
+[File002]
+Location=C:\Users\arko\Documents\GitHub\L1DemosceneBoard\L1Demo-asm-example_v8\L1Demo-asm.hex
+Folder=Output
+DeviceName=PIC24FJ256DA206
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-ld.exe
+PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|L1Demo-sam.s||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
+TraceCmdString=
+DebugOptions=
+[TOOL_LOC_STAMPS]
+tool_loc{C6E07232-414F-4A0C-AF99-CD44E2B71960}=C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-as.exe
+tool_loc{6836D8CA-42BB-48FB-9E77-3F0AA8005073}=C:\Program Files (x86)\Microchip\xc16\v1.21\bin\xc16-ld.exe
