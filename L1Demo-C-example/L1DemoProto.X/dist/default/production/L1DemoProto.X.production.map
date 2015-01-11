@@ -1,4 +1,4 @@
-Microchip Technology Inc, v`…^
+Microchip Technology Inc, vX…w
 
 Tool Name:
   c:\program files (x86)\microchip\xc16\v1.21\bin\bin\..\bin/elf-ld.exe
@@ -60,20 +60,22 @@ Program Memory  [Origin = 0x200, Length = 0x2a9f6]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xd0           0x138  (312)
-.text                        0x2d0              0x5348          0x7cec  (31980)
-.init.delay32               0x5618                0x1c            0x2a  (42)
-.dinit                      0x5634                 0x8             0xc  (12)
+.const                       0x2d0                 0x6             0x9  (9)
+.dinit                       0x2d6               0x414           0x61e  (1566)
+.text                        0x6ea               0x2e2           0x453  (1107)
+.init.delay32                0x9cc                0x1c            0x2a  (42)
 
-                     Total program memory used (bytes):         0x7e5a  (32346) 12%
+                     Total program memory used (bytes):          0xbdc  (3036) 1%
 
 
 Data Memory  [Origin = 0x800, Length = 0x18000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-eds1b                       0x1000                   0         0x16030  (90160)
+FONTS                        0x9f8                   0           0x608  (1544)
+DISPLAY                     0x1000                   0         0x12c00  (76800)
 
-                        Total data memory used (bytes):        0x16030  (90160) 91%
+                        Total data memory used (bytes):        0x13208  (78344) 79%
 
 
 Dynamic Memory Usage
@@ -81,17 +83,19 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x800                               0x800  (2048)
+stack                        0x800                               0x1f8  (504)
 
-                        Maximum dynamic memory (bytes):          0x800  (2048)
+                        Maximum dynamic memory (bytes):          0x1f8  (504)
 
 
 External Symbols in Data Memory (by address):
 
+                    0x09f8                  _FontStart
                     0x1000                  _GFXDisplayBuffer
 
 External Symbols in Data Memory (by name):
 
+                    0x09f8                  _FontStart
                     0x1000                  _GFXDisplayBuffer
 
 External Symbols in Program Memory (by address):
@@ -101,20 +105,30 @@ External Symbols in Program Memory (by address):
                   0x000232                  __data_init
                   0x000232                  __data_init_extended
                   0x0002cc                  __DefaultInterrupt
-                  0x0002d0                  _config_graphics
-                  0x00039c                  _main
-                  0x005618                  ___delay32
+                  0x0006ea                  _config_graphics
+                  0x0007fc                  _config_chr
+                  0x00087a                  _chr_print
+                  0x0008c4                  _rcc_color
+                  0x0008e4                  _rcc_draw
+                  0x000978                  _blank_background
+                  0x00098c                  _main
+                  0x0009cc                  ___delay32
 
 External Symbols in Program Memory (by name):
 
                   0x0002cc                  __DefaultInterrupt
-                  0x005618                  ___delay32
+                  0x0009cc                  ___delay32
                   0x000232                  __data_init
                   0x000232                  __data_init_extended
                   0x000226                  __psv_init
                   0x000200                  __resetPRI
-                  0x0002d0                  _config_graphics
-                  0x00039c                  _main
+                  0x000978                  _blank_background
+                  0x00087a                  _chr_print
+                  0x0007fc                  _config_chr
+                  0x0006ea                  _config_graphics
+                  0x00098c                  _main
+                  0x0008c4                  _rcc_color
+                  0x0008e4                  _rcc_draw
 
 Memory Configuration
 
@@ -193,26 +207,26 @@ __CONFIG1         0x02abfe          0x2
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1a74
+.debug_info       0x000000       0x1ffc
  *(.debug_info)
- .debug_info      0x000000       0x1a74 build/default/production/main.o
+ .debug_info      0x000000       0x1ffc build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x132
+.debug_abbrev     0x000000        0x17d
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x132 build/default/production/main.o
+ .debug_abbrev    0x000000        0x17d build/default/production/main.o
 
-.debug_line       0x000000        0xccc
+.debug_line       0x000000        0x49b
  *(.debug_line)
- .debug_line      0x000000        0xccc build/default/production/main.o
+ .debug_line      0x000000        0x49b build/default/production/main.o
 
-.debug_frame      0x000000         0x34
+.debug_frame      0x000000         0x84
  *(.debug_frame)
- .debug_frame     0x000000         0x34 build/default/production/main.o
+ .debug_frame     0x000000         0x84 build/default/production/main.o
 
-.debug_str        0x000000         0xc1
+.debug_str        0x000000        0x10e
  *(.debug_str)
- .debug_str       0x000000         0xc1 build/default/production/main.o
+ .debug_str       0x000000        0x10e build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -221,10 +235,10 @@ __CONFIG1         0x02abfe          0x2
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x6b
+                  0x000000         0xc6
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x6b build/default/production/main.o
+                  0x000000         0xc6 build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1737,33 +1751,45 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000018        0x1f5
+                  0x000018        0x260
  .debug_pubtypes
-                  0x000018        0x1f5 build/default/production/main.o
+                  0x000018        0x260 build/default/production/main.o
 
 __c30_signature
-                  0x00020e         0x18
+                  0x000278         0x18
  __c30_signature
-                  0x00020e          0x6 build/default/production/main.o
+                  0x000278          0x6 build/default/production/main.o
  __c30_signature
-                  0x000214          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_extended.o)
+                  0x00027e          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(crt0_extended.o)
  __c30_signature
-                  0x00021a          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_extended.o)
+                  0x000284          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(data_init_extended.o)
  __c30_signature
-                  0x000220          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
+                  0x00028a          0x6 c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
 
-eds1b               0x1000      0x16030
- eds1b              0x1000      0x16030 build/default/production/main.o
+DISPLAY             0x1000      0x12c00
+ DISPLAY            0x1000      0x12c00 build/default/production/main.o
                     0x1000                  _GFXDisplayBuffer
 
-.text             0x0002d0       0x5348
- .text            0x0002d0       0x5348 build/default/production/main.o
-                  0x0002d0                  _config_graphics
-                  0x00039c                  _main
+FONTS               0x09f8        0x608
+ FONTS              0x09f8        0x608 build/default/production/main.o
+                    0x09f8                  _FontStart
 
-.init.delay32     0x005618         0x1c
- .init.delay32    0x005618         0x1c c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
-                  0x005618                  ___delay32
+.const              0x82d0          0x6 load address 0x0002d0  
+ .const             0x82d0          0x6 build/default/production/main.o
 
-.dinit            0x005634          0x8
- .dinit           0x005634          0x8 data_init
+.dinit            0x0002d6        0x414
+ .dinit           0x0002d6        0x414 data_init
+
+.text             0x0006ea        0x2e2
+ .text            0x0006ea        0x2e2 build/default/production/main.o
+                  0x0006ea                  _config_graphics
+                  0x0007fc                  _config_chr
+                  0x00087a                  _chr_print
+                  0x0008c4                  _rcc_color
+                  0x0008e4                  _rcc_draw
+                  0x000978                  _blank_background
+                  0x00098c                  _main
+
+.init.delay32     0x0009cc         0x1c
+ .init.delay32    0x0009cc         0x1c c:/program files (x86)/microchip/xc16/v1.21/bin/bin/../../lib\libpic30-elf.a(delay32.eo)
+                  0x0009cc                  ___delay32
