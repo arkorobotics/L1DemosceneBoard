@@ -13,9 +13,9 @@
 ; Configuration bits:
 ;------------------------------------------------------------------------------
 
-				;config	__CONFIG1	FWDTEN_OFF & GWRP_OFF & GCP_OFF & JTAGEN_OFF
-				;config	__CONFIG2 	POSCMOD_HS & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2
-				;config	__CONFIG3   ALTPMP_ALTPMPEN & SOSCSEL_EC
+				config	__CONFIG1	FWDTEN_OFF & GWRP_OFF & GCP_OFF & JTAGEN_OFF
+				config	__CONFIG2 	POSCMOD_HS & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2
+				config	__CONFIG3   ALTPMP_ALTPMPEN & SOSCSEL_EC
 
 ;------------------------------------------------------------------------------
 ; VGA timing
